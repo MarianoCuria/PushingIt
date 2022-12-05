@@ -1,21 +1,18 @@
 export class ReciptPage {
 
-    /*verificarTicket(){
-
-        cy.contains(("Purchase has been completed successfully"), {timeout: 15000}).should("be.visible")
-        cy.contains("Mariano Curia").should("be.visible")
-        cy.contains("Black T-Shirt").should("be.visible")
-        cy.contains("Red Cap").should("exist")
-        cy.contains("1234567891234567").should("be.visible")
-        cy.contains("$25").should("be.visible")
-    }*/
+    constructor(){
+        this.nameLink = '#name'
+        this.tarjetaLink = '#creditCard'
+        this.precioLink = '#totalPrice'
+    }
 
     verificarVentana(){
         cy.contains(("Purchase has been completed successfully"), {timeout: 15000})
     }
 
     verificarNombre(){
-        return(cy.get("#name"))
+        return cy.get(this.nameLink)
+        
     }
 
     verificarProducto(producto){
@@ -23,11 +20,11 @@ export class ReciptPage {
     }
 
     verificarTarjeta(){
-        return(cy.get("#creditCard"))
+        return(cy.get(this.tarjetaLink))
     }
 
     verificarPrecio(){
-        return(cy.get('#totalPrice'))
+        return(cy.get(this.precioLink))
     }
 
 }
