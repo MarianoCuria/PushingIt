@@ -1,0 +1,14 @@
+{
+    "remeraNegra" : {
+        "producto" : "Black T-Shirt",
+        "precio" : 15
+    },
+
+    "gorraRoja" : {
+        "producto" : "Red Cap",
+        "precio" : 10
+    }
+
+
+
+}
