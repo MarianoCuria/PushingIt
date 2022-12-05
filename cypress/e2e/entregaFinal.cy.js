@@ -28,17 +28,18 @@ describe("Page Object Model", () => {
 
   const username = "Mariano" + Math.floor(Math.random() * 1000);
   const mensajeTicket = "has succesfully purchased the following items"
+ 
 
   it("Entrega final", () => {
 
     //Crear usuario
-    
+
     cy.request({
       method: "POST",
-      url: "https://pushing-it-backend.herokuapp.com/api/register",
+      url: "https://pushing-it.onrender.com/api/register",
       body: {
         username: username,
-        password: "123456!!",
+        password: "123456!!!",
         gender: "Male",
         day: "5",
         month: "June",
@@ -49,10 +50,10 @@ describe("Page Object Model", () => {
     //Loguear usuario
     cy.request({
       method: "POST",
-      url: "https://pushing-it-backend.herokuapp.com/api/login",
+      url: "https://pushing-it.onrender.com/api/login",
       body: {
         username: username,
-        password: "123456!!",
+        password: "123456!!!",
       },
     }).then((respuesta) => {
       window.localStorage.setItem("token", respuesta.body.token);
@@ -104,22 +105,22 @@ describe("Page Object Model", () => {
       .should("have.text", ticket.nombre + " " + ticket.apellido + " " + mensajeTicket)
     reciptPage
       .verificarProducto(productosCarrito.remeraNegra.producto)
-      .should("be.visible", productosCarrito.remeraNegra.producto)
+      .should("have.text", productosCarrito.remeraNegra.producto)
     reciptPage
       .verificarProducto(productosCarrito.gorraRoja.producto)
-      .should("be.visible", productosCarrito.gorraRoja.producto )
+      .should("have.text", productosCarrito.gorraRoja.producto )
     reciptPage
       .verificarTarjeta(ticket.tarjetaCredito)
-      .should("be.visible")
+      .should("have.text", ticket.tarjetaCredito)
     reciptPage
       .verificarPrecio()
-      .should("be.visible", productosCarrito.remeraNegra.precio + productosCarrito.gorraRoja.precio)
+      .should("have.text", "You have spent $"+ (productosCarrito.remeraNegra.precio + productosCarrito.gorraRoja.precio))
   });
 
   after("Una vez finalizada la prueba, eliminar usuario", () => {
     cy.request({
       method: "DELETE",
-      url: "https://pushing-it-backend.herokuapp.com/api/deleteuser/" + `${username}`,
+      url: "https://pushing-it.onrender.com/api/deleteuser/" + `${username}`,
     });
   });
 });

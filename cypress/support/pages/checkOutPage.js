@@ -1,21 +1,21 @@
 export class CheckOutPage {
-   
-   /* ingresarDatos(nombre, apellido, tarjetaCredito) {
-        cy.get("#FirstName").type(nombre)
-        cy.get('#lastName').type(`'${apellido}'`)
-        cy.get('#cardNumber').type(tarjetaCredito);
-    }*/
+
+    constructor(){
+        this.nombreLink = '#FirstName'
+        this.apellidoLink = '#lastName'
+        this.tarjetaCreditoLink = '#cardNumber'
+    }
 
     ingresarNombre(nombre){
-        cy.get("#FirstName").type(nombre)
+        cy.get(this.nombreLink).type(nombre)
     }
 
     ingresarApellido(apellido){
-        cy.get('#lastName').type(apellido)
+        cy.get(this.apellidoLink).type(apellido)
     }
 
     ingresarTarjeta(tarjetaCredito){
-        cy.get('#cardNumber').type(tarjetaCredito)
+        cy.get(this.tarjetaCreditoLink).type(tarjetaCredito)
     }
 
     pagarProductos(){
