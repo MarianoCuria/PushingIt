@@ -32,6 +32,7 @@ describe("Page Object Model", () => {
   it("Entrega final", () => {
 
     //Crear usuario
+    
     cy.request({
       method: "POST",
       url: "https://pushing-it-backend.herokuapp.com/api/register",
